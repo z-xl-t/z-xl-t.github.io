@@ -1,0 +1,146 @@
+
+
+a {
+  color: #b854d4;
+  text-decoration: none;
+  position: relative;
+}
+a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  word-wrap: break-word;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform .3s ease-out;
+}
+a:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.bg, .bg::after, .bg-image {
+  background-color: #ffffffa6;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.bg {
+  z-index: -1;
+}
+.bg:after {
+  content: "";
+  z-index: 1;
+}
+.bg-image {
+  z-index: -1;
+  background-image: url(./bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+@media screen and (min-width: 400px) {
+  .layout {
+    max-width: 600px;
+    max-height: 400px;
+  }
+
+}
+
+.layout {
+  
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  background-color: #ffffffa6;
+  box-shadow: 0 14px 38px #00000014, 0 3px 8px #0000000f;
+  user-select: none;
+  overflow: hidden;
+}
+.layout::before {
+  content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 150px;
+    height: 100%;
+    transform: skew(-30deg);
+    transition: left 1s ease 0s;
+    z-index: 1;
+    background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 100%);
+}
+.layout:hover::before {
+  left: 150%;
+}
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display:none;
+}
+
+.home.show, .contact.show {
+  display: flex;
+}
+
+.contact {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  display: none;
+}
+
+.vx-img.show, .qqgroup-img.show {
+  display: block;
+  z-index: 1;
+  opacity: 1;
+}
+
+.vx-img, .qqgroup-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  
+  transition: all 1s ease;
+}
+.vx-img img, .qqgroup-img img {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
